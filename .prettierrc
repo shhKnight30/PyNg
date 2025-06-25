@@ -1,0 +1,9 @@
+{
+  "bracketSpacing": false,
+  "parser": "babylon",
+  "printWidth": 90,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "semi": true,
+  "tabWidth": 4
+}
