@@ -5,7 +5,7 @@ import aggregatePaginate from "mongoose-aggregate-paginate-v2";
 const userSchema = Schema({
     username:{
         required :true,
-        lowercase : true,
+        // lowercase : true,
         unique:true,
         type:String,
         trim:true,
@@ -42,9 +42,17 @@ const userSchema = Schema({
     },
     profileImage:{
         type:String,
-        
+        required :true,
+        default : "https://res.cloudinary.com/dfjazzgd2/image/upload/v1750939333/defaultProfilePicture_cqz5rc.avif"
+    },
+    dateofbirth:{
+        type:Date,
+        required:true
     },
     refreshToken:{
+        type:String
+    },
+    profilebio:{
         type:String
     }
 },{
@@ -69,10 +77,10 @@ userSchema.methods.generateAccessToken = async function(){
         username : this.username,
         fullname: this.fullname
     },process.env.ACCESS_TOKEN_SECRET,{
-        expiresIn:ACCESS_TOKEN_EXPIRES_IN
+        expiresIn:process.env.ACCESS_TOKEN_EXPIRES_IN
     })
 }
-userSchema.methods.generateAccessToken = async function(){
+userSchema.methods.generateRefreshToken = async function(){
     return jwt.sign({
         _id:this._id
     },
