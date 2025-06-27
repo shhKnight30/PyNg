@@ -2,7 +2,7 @@ import { Aggregate, Schema,model, } from "mongoose";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import aggregatePaginate from "mongoose-aggregate-paginate-v2";
-const userSchema = Schema({
+const userSchema = new Schema({
     username:{
         required :true,
         // lowercase : true,
