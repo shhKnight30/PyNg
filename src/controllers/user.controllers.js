@@ -2,10 +2,7 @@ import { asyncHandler } from "../utils/AsyncHandler.js"
 import { ApiError } from "../utils/ApiError.js"
 import { User } from "../models/user.models.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
-// import ro
 import { generateAccessAndRefreshToken } from "../utils/GenerateAccessAndRefreshToken.js"
-
-
 
 const registerUser = asyncHandler(async(req,res)=>{
     console.log(req.body)

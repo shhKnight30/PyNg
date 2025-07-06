@@ -27,12 +27,13 @@ const userSchema = new Schema({
         // trim:true,
         // index:true
     },
-    mobilenumber: {
-        type:String,
-        // required: true,
-        unique:true,
-        trim:true,
-    },
+    // mobilenumber: {
+    //     type:String,
+    //     // required: true,
+    //     unique:true,
+    //     trim:true,
+    //     sparse: true, // allows multiple documents with null/undefined
+    // },
     password: {
         type:String,
         required:[true,'Password is required'],

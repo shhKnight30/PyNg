@@ -1,14 +1,16 @@
 import mongoose, { Schema,model } from "mongoose";
 
 const chatSchema = new Schema({
-    chatName:{
-        type:String,
-        required :true,
-        trim:true
-    },
     isGroup:{
         type:Boolean,
         default :false,
+    },
+    chatName:{
+        type:String,
+        trim:true,
+        required: function () {
+            return this.isGroup === true;
+        }
     },
     members: [
         {
@@ -17,11 +19,14 @@ const chatSchema = new Schema({
             required:true
         }
     ],
-    groupAdmin: (isGroupChat) ? {
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true,
-    }: {},
+    groupAdmin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: function () {
+            return this.isGroup === true;
+        }
+    },
+ 
     latestmessage:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Message", 
